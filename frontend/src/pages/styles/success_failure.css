@@ -1,0 +1,92 @@
+
+.success-icon,
+.failure-icon {
+  font-size: 72px;
+  margin: 40px 0 20px;
+}
+
+.success-message,
+.failure-message {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 40px;
+  color: #333;
+  text-align: center;
+}
+
+.success-page {
+  position: relative;
+  overflow: hidden;
+}
+
+.jumping-tick {
+  font-size: 100px;
+  margin: 50px 0 20px;
+  border-radius: 50%;
+  animation: jump 1s ease-out forwards;
+  color: #52c41a;
+}
+
+@keyframes jump {
+  0% {
+    transform: scale(0) translateY(0);
+    opacity: 0;
+  }
+  30% {
+    transform: scale(1.2) translateY(-20px);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    transform: scale(1.5) translateY(0);
+  }
+}
+
+.success-message {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 40px;
+  color: #333;
+  text-align: center;
+}
+
+.failure-page {
+  position: relative;
+  overflow: hidden;
+}
+
+.failure-warning {
+  font-size: 100px;
+  margin: 50px 0 20px;
+  animation: warning-shake 0.6s ease-out forwards;
+  color: #ff4d4f;
+  text-shadow: 0 0 10px rgba(255, 77, 79, 0.8);
+}
+
+@keyframes warning-shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.failure-message {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 40px;
+  color: #333;
+  text-align: center;
+}

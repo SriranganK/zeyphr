@@ -1,0 +1,148 @@
+/* Reset and Base Setup */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  font-family: 'Inder', sans-serif;
+  background-color: #ffffff; /* Now this is the whole screen */
+}
+
+/* Fullscreen Container */
+.home-fullscreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem 1.5rem;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+/* Logo */
+.logo {
+  width: 60%;
+  max-width: 200px;
+  margin-bottom: 1.5rem;
+}
+
+/* Title Text */
+.pay-with-text {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.pay-button {
+  width: 130px;
+  height: 130px;
+  background-color: #ddd;
+  border: none;
+  border-radius: 16px;
+  margin: 10px 0;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.pay-button:hover {
+  background-color: #ccc;
+}
+
+.new-button {
+    width: 330px;
+  height: 50px;
+  background-color: #ddd;
+  border: none;
+  border-radius: 16px;
+  margin: 10px 0;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;   
+}
+.icon {
+  width: 50px;
+  height: 50px;
+}
+
+/* Footer */
+.footer {
+  margin-top: auto;
+  padding-top: 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.iota-logo {
+  width: 80px;
+  margin-top: 0.5rem;
+}
+
+/* Responsive tweaks */
+@media (max-width: 360px) {
+  .pay-button {
+    font-size: 1rem;
+    padding: 0.6rem;
+  }
+
+  .logo {
+    width: 70%;
+  }
+}
+
+/* Mobile Nav Icon */
+.mobile-nav-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: #000;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1000; /* Ensure it's above other elements */
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  position: absolute;
+  top: 60px; /* Below the nav icon */
+  right: 20px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+}
+
+/* Dropdown Items */
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 10px 20px;
+  text-align: left;
+  color: #333;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #f0f0f0;
+}

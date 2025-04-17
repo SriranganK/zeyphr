@@ -1,0 +1,41 @@
+.tap-page {
+    position: absolute;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.tap-instruction {
+  /* Check if it's hidden or has 0 opacity */
+  color: white;   /* ✅ use a visible color depending on background */
+}
+
+.tap-icon {
+  animation: jump 1s ease-out infinite;
+  color: #1890ff;
+  margin-bottom: 20px;
+}
+
+@keyframes jump {
+  0% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-10px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.tap-timer {
+  font-size: 18px;
+  margin-top: 20px;
+  color: #333;
+}

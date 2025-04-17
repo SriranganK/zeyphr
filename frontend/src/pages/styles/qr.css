@@ -1,0 +1,43 @@
+
+.qr-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+.qr-timer {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #ff4d4f;
+  font-weight: bold;
+}
+.avatar {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+}
+
+.paying-to {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.qr-instruction {
+  margin: 12px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.qr-amount {
+  margin-top: 16px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
