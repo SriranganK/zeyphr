@@ -1,0 +1,26 @@
+.card-wrapper {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.card-wrapper:hover {
+  transform: scale(1.01);
+}
+
+.card-wrapper:hover .favorite-button {
+  opacity: 1;
+}
+
+.favorite-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 10;
+}

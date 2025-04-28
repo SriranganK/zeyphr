@@ -1,0 +1,189 @@
+/* sell.css */
+
+/* Container Styles */
+.sell-container {
+  max-width: 95%;
+  margin: 0 auto;
+  padding: 24px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 5px #ccc;
+}
+
+/* Heading Styles */
+.sell-container h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Button Toggle Styles */
+.toggle-buttons {
+  margin-bottom: 20px;
+}
+
+.button-toggle {
+  font-size: 16px;
+  padding: 10px 20px;
+  margin-right: 10px;
+  border: 1px solid #6238f1;
+  border-radius: 6px;
+  color: #6238f1;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.button-toggle.active {
+  background-color: #6238f1;
+  color: white;
+}
+
+/* Input Styles */
+.input-field {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.textarea-field {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  margin-bottom: 12px;
+  height: 80px;
+}
+
+/* Label Styles */
+.label {
+  font-weight: 500;
+  margin-bottom: 6px;
+  display: block;
+}
+
+/* Button Styles */
+.button {
+  padding: 12px 20px;
+  background-color: #6238f1;
+  color: #fff;
+  border: none;
+  border-radius: 35px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 16px;
+}
+
+.button:hover {
+  background-color: #1871e1;
+}
+/* Container for the User Collection */
+.user-collection-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+  .user-collection-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .user-collection-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Individual NFT card style */
+.nft-card {
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  padding: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.nft-card:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* NFT Image Styling */
+.nft-image-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.nft-image {
+  width: 8rem;
+  height: 8rem;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* NFT Info Section */
+.nft-info {
+  text-align: center;
+}
+
+.nft-token-id {
+  font-weight: bold;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.nft-status {
+  margin-top: 0.5rem;
+  color: #777;
+  font-size: 0.9rem;
+}
+
+.nft-price {
+  margin-top: 1rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #6c5ce7;
+}
+
+/* Buttons */
+.nft-action-buttons {
+  margin-top: 1.5rem;
+}
+
+.list-button,
+.unlist-button {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.list-button {
+  background-color: #38b2ac;
+  color: white;
+}
+
+.unlist-button {
+  background-color: #e53e3e;
+  color: white;
+}
+
+.list-button:hover {
+  background-color: #2c7a7b;
+}
+
+.unlist-button:hover {
+  background-color: #c53030;
+}
