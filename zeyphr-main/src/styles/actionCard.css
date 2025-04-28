@@ -1,0 +1,92 @@
+/* actionCard.css */
+
+/* Container for the section */
+.action-card-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 24px;
+}
+
+/* Grid for the top row */
+.action-card-grid-top {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  width: 100%;
+  max-width: 80rem;
+}
+
+/* Grid for the bottom row */
+.action-card-grid-bottom {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  width: 100%;
+  max-width: 80rem;
+}
+
+/* Card style */
+.card {
+  background-color: #f3f4f6;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Hover effect */
+.card:hover {
+  background-color: #e5e7eb;
+}
+
+/* Icon style */
+.card-icon {
+  width: 28px;
+  height: 28px;
+  margin-bottom: 4px;
+}
+
+/* Title style */
+.card-title {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+/* Subtitle style */
+.card-subtitle {
+  color: #6b7280;
+  font-size: 15px;
+  text-align: center;
+}
+
+/* Mobile view adjustments */
+@media screen and (max-width: 768px) {
+  .card-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .card-title {
+    font-size: 14px;
+  }
+
+  .card-subtitle {
+    font-size: 12px;
+  }
+
+  .action-card-grid-top {
+    grid-template-columns: 1fr;
+  }
+
+  .action-card-grid-bottom {
+    grid-template-columns: 1fr 1fr;
+  }
+}
