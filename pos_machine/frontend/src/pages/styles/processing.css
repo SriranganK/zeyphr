@@ -1,0 +1,64 @@
+
+
+.home-fullscreen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Align from top */
+    min-height: 100vh;
+    padding: 2rem 1.5rem;
+    background-color: #ffffff;
+    text-align: center;
+  }
+  
+  .logo-container {
+    width: 100%; /* Make the logo container take full width */
+    text-align: center; /* Center logo horizontally */
+    margin-bottom: 20px; /* Add some space below the logo */
+  }
+  
+  .processing-content {
+    flex: 1; /* Take available space */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Center loader and text vertically */
+  }
+  
+  .footer {
+    margin-top: auto; /* Push footer to bottom */
+    text-align: center;
+  }
+  
+
+.processing-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* center vertically */
+    height: 100vh; /* full viewport height */
+    background-color: #fff; /* optional background */
+  }
+
+  
+  .loader {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #3498db; /* blue color */
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    animation: spin 1s linear infinite;
+    margin: 20px 0;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .processing-message {
+    font-size: 24px;
+    margin-top: 10px;
+    color: #333;
+  }
+  
