@@ -4,7 +4,7 @@ import os
 from py532lib.mifare import Mifare, MIFARE_FACTORY_KEY
 
 # AES key (32 bytes for AES-256) - 
-aes_key = b'0123456789abcdef0123456789abcdef'
+aes_key = b'' 
 
 def encrypt_hex_cbc(hex_value, key):
     data = bytes.fromhex(hex_value)
