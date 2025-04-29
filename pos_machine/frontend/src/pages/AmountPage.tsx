@@ -30,7 +30,7 @@ const AmountPage: React.FC = () => {
   };
 
   const handleClose = () => {
-    navigate("/"); // Navigate to the scan page
+    navigate("/homepage"); // Navigate to the scan page
   };
 
   const keypadKeys = [

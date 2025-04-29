@@ -25,7 +25,7 @@ const InsufficientBalancePage: React.FC = () => {
             <h2 className="failure-message">Insufficient Balance</h2>
 
             <div className="footer">
-                <p className="powered-by">Powered by</p>
+                {/* <p className="powered-by">Powered by</p> */}
                 <img src="/iota-logo.png" alt="IOTA" className="iota-logo" />
             </div>
         </div>

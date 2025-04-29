@@ -4,8 +4,6 @@ import "./styles/tap.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-
-
 const TapPage: React.FC = () => {
   const [timeLeft, setTimeLeft] = useState(60);
   const [showTimeout, setShowTimeout] = useState(false);
@@ -13,54 +11,48 @@ const TapPage: React.FC = () => {
   const location = useLocation();
   const amount = location.state?.amount ?? 0;
 
-    const handleClose = () => {
-      navigate("/"); // Navigate to the scan page
-    };
+  const handleClose = () => {
+    navigate("/"); // Navigate to the scan page
+  };
 
   useEffect(() => {
-   
-    const handleNFC = async (amount:Number) => {
-
+    const handleNFC = async (amount: number) => {
       try {
-        const res = await axios.get("http://localhost:6442/api/read-card",{})
+        // Use relative URL to leverage the proxy
+        const res = await axios.get("/api/read-card");
         console.log("Public Key:", res);
 
-        if (res.data.status == "card_detected"){
+        if (res.data.status === "card_detected") {
           navigate("/processing");
 
-          const response = await axios.post(
-            "http://localhost:6442/api/newtransaction",
-            {
-              pubkey: res.data.pub_key,
-              amount: amount,
-            }
-          );
-          // console.log(response)  Need to condition to navigate to pages based on backednd response
+          const response = await axios.post("/api/newtransaction", {
+            pubkey: res.data.pub_key,
+            privkey: res.data.priv_key,
+            amount: amount,
+            merchant_publicKey: localStorage.getItem("m_publicKey"),
+
+          });
+
+          // Conditionally navigate based on the response status
           if (response.status === 200) {
             navigate("/success");
           } else {
             navigate("/failure");
           }
-        }
-        else if (res.data.status == "no_card_detected" || res.data.status == "read_error"){
+        } else if (res.data.status === "no_card_detected" || res.data.status === "read_error") {
           navigate("/failure");
-          
         }
-
-        
-       
       } catch (error) {
         console.error("Error processing transaction:", error);
         navigate("/failure");
       }
     };
 
-    handleNFC(amount)
+    handleNFC(amount);
   }, [amount, navigate]);
 
   // Countdown timer logic
   useEffect(() => {
-    
     if (timeLeft > 0) {
       const timer = setInterval(() => {
         setTimeLeft((prev) => prev - 1);
@@ -95,7 +87,6 @@ const TapPage: React.FC = () => {
       </div>
 
       <div className="footer">
-        <p className="powered-by">Powered by</p>
         <img src="/iota-logo.png" alt="IOTA" className="iota-logo" />
       </div>
     </div>

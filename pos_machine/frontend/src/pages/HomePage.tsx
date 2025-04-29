@@ -10,7 +10,11 @@ const HomePage: React.FC = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-
+  const handleLogout = () => {
+    localStorage.removeItem("m_publicKey");
+    navigate("/"); // or any route you want to go after logout
+  };
+  
   return (
     <div className="home-fullscreen">
       {/* Mobile Nav Icon */}
@@ -33,8 +37,9 @@ const HomePage: React.FC = () => {
           <button
             className="dropdown-item"
             onClick={() => {
-              navigate("/");
               setIsMenuOpen(false); // Close the menu after navigation
+              handleLogout();
+              navigate("/");
             }}
           >
             Sign Out
@@ -65,7 +70,7 @@ const HomePage: React.FC = () => {
       </button>
 
       <div className="footer">
-        <p className="powered-by">Powered by</p>
+        {/* <p className="powered-by">Powered by</p> */}
         <img src="/iota-logo.png" alt="IOTA" className="iota-logo" />
       </div>
     </div>

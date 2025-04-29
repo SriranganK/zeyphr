@@ -26,7 +26,7 @@ const SuccessPage: React.FC = () => {
       x
       </button>
       <div className="footer">
-        <p className="powered-by">Powered by</p>
+        {/* <p className="powered-by">Powered by</p> */}
         <img src="/iota-logo.png" alt="IOTA" className="iota-logo" />
       </div>
     </div>

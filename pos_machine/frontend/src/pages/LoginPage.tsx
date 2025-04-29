@@ -28,6 +28,9 @@ const LoginPage: React.FC = () => {
       });
   
       if (response.ok) {
+        
+        const data = await response.json(); 
+        localStorage.setItem("m_publicKey", data.publicKey);
         navigate("/homepage");
       } else {
         setErrorMessage("Invalid credentials. Please try again.");

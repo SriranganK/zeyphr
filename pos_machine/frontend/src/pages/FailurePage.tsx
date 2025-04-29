@@ -14,7 +14,7 @@ const FailurePage: React.FC = () => {
       <h2 className="failure-message">Payment Failed</h2>
 
       <div className="footer">
-        <p className="powered-by">Powered by</p>
+        {/* <p className="powered-by">Powered by</p> */}
         <img src="/iota-logo.png" alt="IOTA" className="iota-logo" />
       </div>
     </div>
