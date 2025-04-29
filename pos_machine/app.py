@@ -83,7 +83,7 @@ def read_card():
             pubkey_bin = full_data[:20]
             encrypted_privkey_bin = full_data[32:96]  # Start after block 1/1 (includes padding)
 
-            aes_key = b'0123456789abcdef0123456789abcdef'
+            aes_key = b''
             return jsonify({
                 "pub_key": "0x" + pubkey_bin.hex(),
                 "priv_key": decrypt_hex(encrypted_privkey_bin.hex(),aes_key),
