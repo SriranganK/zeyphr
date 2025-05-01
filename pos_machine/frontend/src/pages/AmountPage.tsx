@@ -57,7 +57,7 @@ const AmountPage: React.FC = () => {
 
       <div className="avatar">M</div> {/* Move this outside header */}
       <div className="header">
-        <div className="paying-text">Paying Bank Name</div>
+
       </div>
       <div className="amount-section">
         <div className="amount-container">

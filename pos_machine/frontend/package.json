@@ -1,7 +1,7 @@
 {
   "name": "zeyphr_frontend",
   "private": true,
-  "proxy":"http://127.0.0.1:6442",
+  "proxy": "http://127.0.0.1:6442",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -11,17 +11,21 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/node": "^22.15.3",
     "axios": "^1.8.4",
+    "jwt-decode": "^4.0.0",
     "qrcode.react": "^4.2.0",
     "react": "^19.0.0",
     "react-confetti": "^6.4.0",
     "react-dom": "^19.0.0",
     "react-qr-code": "^2.0.15",
     "react-router-dom": "^7.5.0",
-    "socket.io-client": "^4.8.1"
+    "socket.io-client": "^4.8.1",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
+    "@types/jsonwebtoken": "^9.0.9",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react-swc": "^3.8.0",

@@ -1,45 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./styles/style.css";
 import { useNavigate } from "react-router-dom";
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // State to manage the dropdown menu
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [merchantEmail, setMerchantEmail] = useState<string | null>(null);
 
-  // Function to toggle the dropdown menu
+  useEffect(() => {
+    const email = localStorage.getItem("merchant_email");
+    setMerchantEmail(email);
+  }, []);
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
   const handleLogout = () => {
     localStorage.removeItem("m_publicKey");
-    navigate("/"); // or any route you want to go after logout
+    localStorage.removeItem("jwt_token");
+    localStorage.removeItem("merchant_email");
+    navigate("/");
   };
-  
+
   return (
     <div className="home-fullscreen">
       {/* Mobile Nav Icon */}
       <div className="mobile-nav-icon" onClick={toggleMenu}>
-        ☰ {/* Hamburger icon */}
+        ☰
       </div>
 
       {/* Dropdown Menu */}
       {isMenuOpen && (
         <div className="dropdown-menu">
-          {/* <button
-            className="dropdown-item"
-            onClick={() => {
-              navigate("/transaction-history");
-              setIsMenuOpen(false); // Close the menu after navigation
-            }}
-          >
-            Transaction History
-          </button> */}
+          {merchantEmail && (
+            <div className="dropdown-email">
+              Signed in as<br /><strong>{merchantEmail}</strong>
+            </div>
+          )}
           <button
             className="dropdown-item"
             onClick={() => {
-              setIsMenuOpen(false); // Close the menu after navigation
+              setIsMenuOpen(false);
               handleLogout();
-              navigate("/");
             }}
           >
             Sign Out
@@ -70,7 +73,6 @@ const HomePage: React.FC = () => {
       </button>
 
       <div className="footer">
-        {/* <p className="powered-by">Powered by</p> */}
         <img src="/iota-logo.png" alt="IOTA" className="iota-logo" />
       </div>
     </div>

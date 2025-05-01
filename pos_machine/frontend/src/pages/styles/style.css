@@ -146,3 +146,12 @@ html, body, #root {
 .dropdown-item:hover {
   background-color: #f0f0f0;
 }
+.dropdown-email {
+  padding: 10px 15px;
+  font-size: 14px;
+  color: #333;
+  background: #f9f9f9;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+

@@ -6,25 +6,40 @@ import HomePage from "./pages/HomePage";
 import QrPage from "./pages/QrCodePage";
 import SuccessPage from "./pages/SuccessPage";
 import TapPage from "./pages/TapPage";
-import InsufficientBalancePage from "./pages/InsufficientBalance";
 import ProcessingPage from "./pages/ProcessingPage";  
 import LoginPage from "./pages/LoginPage";
 
-
+import ProtectedRoute from "./pages/ProtectedRoute";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/homepage" element={<HomePage />} />
-        <Route path="/amount" element={<AmountPage />} />
-        <Route path="/scan" element={<QrPage />} />
-        <Route path="/success" element={<SuccessPage />} />
-        <Route path="/tap" element={<TapPage />} />
-        <Route path="/failure" element={<FailurePage />} />
-        <Route path="/insufficientbalance" element={<InsufficientBalancePage />} />
-        <Route path="/processing" element={<ProcessingPage />} />
+        {/* Public route */}
         <Route path="/" element={<LoginPage />} />
+
+        {/* Protected routes */}
+        <Route path="/homepage" element={
+          <ProtectedRoute><HomePage /></ProtectedRoute>
+        } />
+        <Route path="/amount" element={
+          <ProtectedRoute><AmountPage /></ProtectedRoute>
+        } />
+        <Route path="/scan" element={
+          <ProtectedRoute><QrPage /></ProtectedRoute>
+        } />
+        <Route path="/success" element={
+          <ProtectedRoute><SuccessPage /></ProtectedRoute>
+        } />
+        <Route path="/tap" element={
+          <ProtectedRoute><TapPage /></ProtectedRoute>
+        } />
+        <Route path="/failure" element={
+          <ProtectedRoute><FailurePage /></ProtectedRoute>
+        } />
+        <Route path="/processing" element={
+          <ProtectedRoute><ProcessingPage /></ProtectedRoute>
+        } />
       </Routes>
     </Router>
   );

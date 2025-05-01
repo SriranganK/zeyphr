@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./styles/style.css";
 import "./styles/tap.css";
 import { useLocation, useNavigate } from "react-router-dom";
-import axios from "axios";
 
 const TapPage: React.FC = () => {
   const [timeLeft, setTimeLeft] = useState(60);
@@ -18,28 +17,49 @@ const TapPage: React.FC = () => {
   useEffect(() => {
     const handleNFC = async (amount: number) => {
       try {
-        // Use relative URL to leverage the proxy
-        const res = await axios.get("/api/read-card");
-        console.log("Public Key:", res);
+        const res = await fetch("/api/read-card");
+        const resData = await res.json();
+        console.log("response_read_card:", resData);
 
-        if (res.data.status === "card_detected") {
+        if (resData.status === "card_detected") {
           navigate("/processing");
 
-          const response = await axios.post("/api/newtransaction", {
-            pubkey: res.data.pub_key,
-            privkey: res.data.priv_key,
-            amount: amount,
-            merchant_publicKey: localStorage.getItem("m_publicKey"),
-
+          const response = await fetch(`${import.meta.env.VITE_ZEYPHR_URL}/api/transaction/new`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${localStorage.getItem("jwt_token")}`,
+            },
+            body: JSON.stringify({
+              publicKey: resData.pub_key,
+              privateKey: resData.priv_key,
+              amount: amount,
+              merchantPublicKey: localStorage.getItem("m_publicKey"),
+            }),
           });
-
-          // Conditionally navigate based on the response status
+          const data = await response.json();
           if (response.status === 200) {
-            navigate("/success");
-          } else {
-            navigate("/failure");
+            
+            navigate("/success", {
+              state: {
+                to: data.userEmail,
+                amount: `${data.amount} ETH`
+              }
+            });
+            
           }
-        } else if (res.data.status === "no_card_detected" || res.data.status === "read_error") {
+           else {
+            
+            navigate("/failure", { 
+              state: { 
+                message: data.error, 
+              } 
+            });
+          }
+        } else if (
+          resData.status === "no_card_detected" ||
+          resData.status === "read_error"
+        ) {
           navigate("/failure");
         }
       } catch (error) {
@@ -49,7 +69,7 @@ const TapPage: React.FC = () => {
     };
 
     handleNFC(amount);
-  }, [amount, navigate]);
+  }, [amount]);
 
   // Countdown timer logic
   useEffect(() => {

@@ -80,7 +80,7 @@
     
   .login-button {
     padding: 0.8rem;
-    background-color: #3498db;
+    background-color: #7227ff;
     border: none;
     border-radius: 8px;
     color: white;
@@ -90,7 +90,7 @@
   }
   
   .login-button:hover {
-    background-color: #2980b9;
+    background-color: #743cdb;
   }
   
   .login-footer {

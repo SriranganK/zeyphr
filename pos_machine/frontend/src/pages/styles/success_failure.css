@@ -55,6 +55,8 @@
 .failure-page {
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .failure-warning {
@@ -144,3 +146,46 @@
   transform: translate(-50%, -50%) rotate(-45deg);
 }
 
+.email-info {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 16px;
+  color: #444;
+}
+.email-info p {
+  margin: 4px 0;
+}
+
+.center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: calc(100vh - 100px); 
+}
+
+.transaction-info {
+  text-align: left;
+  margin-top: 20px;
+  font-size: 16px;
+  color: #444;
+}
+
+.transaction-info p {
+  margin: 6px 0;
+}
+.transaction-info p strong {
+  font-weight: bold;
+}
+
+.transaction-box {
+  border: 1px solid #cccccc;
+  border-radius: 12px;
+  padding: 16px 24px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 8px rgba(0, 2, 0, 0.20);
+  margin-top: 20px;
+  width: fit-content;
+  min-width: 280px;
+}
