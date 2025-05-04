@@ -14,20 +14,22 @@ const QrPage: React.FC = () => {
   const [transactionInitialized, setTransactionInitialized] = useState(false);
 
   const publicKey = localStorage.getItem("m_publicKey");
-  const qrValue = `zeyphr://qrpay?pub=${publicKey}&am=${amount}&tx=${transactionID}`;
-
+  const qrValue = `zeyphr://qrpay?pub=${publicKey}&amt=${amount}&tx=${transactionID}`;
+  const merchantPubKey = localStorage.getItem("m_publicKey");
   const pollIntervalRef = useRef<number | null>(null);
   const countdownRef = useRef<number | null>(null);
 
   // Step 1: POST /scan/new
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_ZEYPHR_URL}/api/transaction/scan/new`, {
+    fetch(`${import.meta.env.VITE_ZEYPHR_URL}/api/machine/scan/new`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("jwt_token")}`,
       },
-      body: JSON.stringify({ transactionID }),
+      body: JSON.stringify({ id:transactionID, amount, to:merchantPubKey} ,
+
+      ),
     })
       .then((res) => {
         if (!res.ok) throw new Error("Failed to initialize transaction");
@@ -51,7 +53,7 @@ const QrPage: React.FC = () => {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${localStorage.getItem("jwt_token")}`,
-          },body: JSON.stringify({ transactionID }),
+          },body: JSON.stringify({ id:transactionID }),
         }
         )
         const data = await response.json();
@@ -67,8 +69,27 @@ const QrPage: React.FC = () => {
             cancelTransaction();
             navigate("/failure", { state: { message: "Timeout" } });
           }
+          else if (data.status === "failure") {
+            cleanupTimers();
+            cancelTransaction();
+            navigate("/failure", { state: { message: data.errorMessage } });
+          }
          else if (data.status === "success") {
-            navigate("/success");
+          const res_user_email = await fetch(`${import.meta.env.VITE_ZEYPHR_URL}/api/users/search?query=${data.from}`,{
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${localStorage.getItem("jwt_token")}`,
+            },
+          })
+          console.log("res_user_email", res_user_email)
+          const email_data = await res_user_email.json()
+          navigate("/success", {
+            state: {
+              to: email_data[0].emailAddress,
+              amount: `${data.amount} ETH`
+            }
+          });
             cleanupTimers();
         } else if (data.status === "failure") {
           cleanupTimers();
@@ -117,7 +138,7 @@ const QrPage: React.FC = () => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("jwt_token")}`,
       },
-      body: JSON.stringify({ transactionID }),
+      body: JSON.stringify({ id:transactionID }),
     }).catch((err) => console.error("Error cancelling transaction:", err));
   };
 

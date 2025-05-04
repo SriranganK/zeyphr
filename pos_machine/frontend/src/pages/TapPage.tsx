@@ -24,18 +24,17 @@ const TapPage: React.FC = () => {
         if (resData.status === "card_detected") {
           navigate("/processing");
 
-          const response = await fetch(`${import.meta.env.VITE_ZEYPHR_URL}/api/transaction/new`, {
+          const response = await fetch(`${import.meta.env.VITE_ZEYPHR_URL}/api/machine/card/new`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
               Authorization: `Bearer ${localStorage.getItem("jwt_token")}`,
             },
             body: JSON.stringify({
-              publicKey: resData.pub_key,
-              privateKey: resData.priv_key,
+              from: resData.pub_key,
               amount: amount,
-              merchantPublicKey: localStorage.getItem("m_publicKey"),
-            }),
+              to: localStorage.getItem("m_publicKey"),
+            }),            
           });
           const data = await response.json();
           if (response.status === 200) {
@@ -52,7 +51,7 @@ const TapPage: React.FC = () => {
             
             navigate("/failure", { 
               state: { 
-                message: data.error, 
+                message: data.message, 
               } 
             });
           }
@@ -60,11 +59,19 @@ const TapPage: React.FC = () => {
           resData.status === "no_card_detected" ||
           resData.status === "read_error"
         ) {
-          navigate("/failure");
+          navigate("/failure", { 
+            state: { 
+              message: "Card not detected", 
+            } 
+          });
         }
       } catch (error) {
         console.error("Error processing transaction:", error);
-        navigate("/failure");
+        navigate("/failure", { 
+          state: { 
+            message: "Error processing transaction", 
+          } 
+        });
       }
     };
 
